@@ -6,6 +6,7 @@ TextStyle textStyle(double size, Color color, FontWeight fw) {
 }
 
 List selectableTimes = [
+  "0",
   "300",
   "600",
   "900",
@@ -18,3 +19,19 @@ List selectableTimes = [
   "3000",
   "3300"
 ];
+
+Color renderColor(String currentState) {
+  if (currentState == "FOCUS") {
+    return Colors.redAccent;
+  } else {
+    return Colors.lightBlueAccent;
+  }
+}
+
+Color? renderColorColon(String currentState) {
+  if (currentState == "FOCUS") {
+    return Colors.red[200];
+  } else {
+    return Colors.blue[200];
+  }
+}

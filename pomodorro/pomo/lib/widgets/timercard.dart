@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomo/timerservice.dart';
+import 'package:pomo/utils.dart';
 import 'package:provider/provider.dart';
 
 class TimerCard extends StatelessWidget {
@@ -10,8 +11,8 @@ class TimerCard extends StatelessWidget {
     return Column(
       children: [
         Text(
-          "FOCUS",
-          style: TextStyle(
+          "${provider.currentState}",
+          style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.w700,
               fontFamily: 'Montserrat',
@@ -37,12 +38,8 @@ class TimerCard extends StatelessWidget {
               child: Center(
                 child: Text(
                   (provider.currentDuration ~/ 60).toString(),
-                  style: const TextStyle(
-                    fontSize: 70,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Montserrat',
-                    color: Colors.redAccent,
-                  ),
+                  style: textStyle(
+                      70, renderColor(provider.currentState), FontWeight.bold),
                 ), // Text
               ),
             ), // Container
@@ -53,7 +50,7 @@ class TimerCard extends StatelessWidget {
                   fontSize: 60,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Montserrat',
-                  color: Colors.red[200]),
+                  color: renderColorColon(provider.currentState)),
             ), // Text
             SizedBox(width: 10),
             Container(
@@ -74,12 +71,8 @@ class TimerCard extends StatelessWidget {
                   seconds == 0
                       ? "${seconds.round()}0"
                       : seconds.round().toString(),
-                  style: TextStyle(
-                    fontSize: 70,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Montserrat',
-                    color: Colors.redAccent,
-                  ),
+                  style: textStyle(
+                      70, renderColor(provider.currentState), FontWeight.bold),
                 ), // Text
               ),
             ), // Container

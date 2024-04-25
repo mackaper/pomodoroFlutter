@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pomo/timerservice.dart';
 import 'package:pomo/widgets/timeoptions.dart';
+import 'package:provider/provider.dart';
 import 'utils.dart';
 import 'widgets/timercard.dart';
 import 'widgets/timeoptions.dart';
@@ -9,11 +11,12 @@ import 'widgets/progresswidget.dart';
 class PomodoroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TimerService>(context);
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor: renderColor(provider.currentState),
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.redAccent,
+        backgroundColor: renderColor(provider.currentState),
         centerTitle: false, //aligns the "POMODORO" text to the left
         title: Text(
           'POMODORO',
@@ -29,7 +32,8 @@ class PomodoroScreen extends StatelessWidget {
             // refresh icon
             icon: Icon(Icons.refresh, color: Colors.white),
             iconSize: 40,
-            onPressed: () {},
+            onPressed: () =>
+                Provider.of<TimerService>(context, listen: false).reset(),
           ) // IconButton
         ],
       ), // AppBar

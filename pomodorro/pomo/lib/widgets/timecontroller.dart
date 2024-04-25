@@ -28,7 +28,9 @@ class _TimeControllerState extends State<TimeController> {
             color: Colors.white,
             iconSize: 55,
             onPressed: () {
-              provider.timerPlaying ? provider.pause() : provider.start();
+              provider.timerPlaying
+                  ? Provider.of<TimerService>(context, listen: false).pause()
+                  : Provider.of<TimerService>(context, listen: false).start();
             },
           ),
         ));
